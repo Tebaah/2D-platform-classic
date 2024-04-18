@@ -3,8 +3,6 @@
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_syjx6"]
 [ext_resource type="Texture2D" uid="uid://cfkqcyjyydpli" path="res://Assets/Tiles/Vector/vector_characters.svg" id="2_fh3fq"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mm6rm"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hhq4p"]
 atlas = ExtResource("2_fh3fq")
 region = Rect2(240, 0, 80, 126)
@@ -82,13 +80,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mm6rm"]
+radius = 22.0
+height = 94.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_syjx6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_mm6rm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q828r")
 animation = &"walk"
 autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mm6rm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
