@@ -18,27 +18,26 @@ public partial class Player : CharacterBody2D
     }
     public override void _PhysicsProcess(double delta)
     {
+        
+        CharacterController(delta);
+
+    }
+
+    public void CharacterController(double delta)
+    {
         Vector2 velocity = Velocity;
 
-        velocity.Y += gravity * (float)delta;
-        
-        if(Input.IsActionPressed("right"))
-        {            
-            _animationController.Play("walk");
-            _animationController.FlipH = false;
-        }
-        else if(Input.IsActionPressed("left"))
+        float direction = Input.GetAxis("left", "right");
+        velocity.X = direction * 100;
+
+        if(!IsOnFloor())
         {
-            _animationController.Play("walk");
-            _animationController.FlipH = true;
-        }
-        else
-        {
-            _animationController.Play("idle");
+            velocity.Y += gravity * (float)delta;
         }
 
-        if (Input.IsActionJustPressed("jump"))
+        if(Input.IsActionJustPressed("jump") && IsOnFloor())
         {
+            velocity.Y = -500;
             _animationController.Play("jump");
             AudioStreamWav effect = GD.Load<AudioStreamWav>("res://Assets/Audios/Effects/Jump 1.wav");
             audioController.Stream = effect;
@@ -48,6 +47,5 @@ public partial class Player : CharacterBody2D
         Velocity = velocity;
         MoveAndSlide();
 
-        GD.Print(Position);
     }
 }
