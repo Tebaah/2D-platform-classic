@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 [gd_scene load_steps=12 format=3 uid="uid://ceyl0u3tcuyoe"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_syjx6"]
 [ext_resource type="Texture2D" uid="uid://cfkqcyjyydpli" path="res://Assets/Tiles/Vector/vector_characters.svg" id="2_fh3fq"]
+=======
+[gd_scene load_steps=14 format=3 uid="uid://ceyl0u3tcuyoe"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterController.cs" id="1_syjx6"]
+[ext_resource type="AudioStream" uid="uid://cbcif323ta3ri" path="res://Assets/Audios/Effects/Jump 1.wav" id="2_b7cwi"]
+[ext_resource type="Texture2D" uid="uid://cfkqcyjyydpli" path="res://Assets/Tiles/Vector/vector_characters.svg" id="2_fh3fq"]
+[ext_resource type="AudioStream" uid="uid://dm2xlmnwxraol" path="res://Assets/Audios/Effects/Hit damage 1.wav" id="3_vsi5s"]
+>>>>>>> player
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hhq4p"]
 atlas = ExtResource("2_fh3fq")
@@ -85,7 +94,16 @@ radius = 22.0
 height = 94.0
 
 [node name="Player" type="CharacterBody2D"]
+<<<<<<< HEAD
 script = ExtResource("1_syjx6")
+=======
+position = Vector2(-4, 0)
+collision_mask = 2
+script = ExtResource("1_syjx6")
+speedWalk = 250.0
+speedJump = 500.0
+effects = Array[AudioStreamWAV]([ExtResource("2_b7cwi"), ExtResource("3_vsi5s")])
+>>>>>>> player
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q828r")
