@@ -73,12 +73,13 @@ speedJump = 500.0
 effects = Array[AudioStreamWAV]([ExtResource("2_b7cwi"), ExtResource("3_vsi5s")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -127)
 sprite_frames = SubResource("SpriteFrames_q828r")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 58)
+position = Vector2(0, -70)
 shape = SubResource("CapsuleShape2D_mm6rm")
 
 [node name="Camera2D" type="Camera2D" parent="."]

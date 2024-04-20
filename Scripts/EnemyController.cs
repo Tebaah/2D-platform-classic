@@ -31,6 +31,8 @@ public partial class EnemyController : CharacterBody2D
         // asigna las posiciones iniciales y finales
         _initialPosition = Position.X;
         _endPosition = _initialPosition - _distance;
+
+        GD.Print(_speedMovement);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -73,6 +75,7 @@ public partial class EnemyController : CharacterBody2D
             }
         }
     
+        velocity = velocity.Normalized() * _speedMovement;
 
         Velocity = velocity;
         MoveAndSlide();

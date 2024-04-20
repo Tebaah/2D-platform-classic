@@ -26,6 +26,7 @@ public partial class CharacterController : CharacterBody2D
         
         MotionController(delta);
         AnimationController();
+;
 
     }
 
