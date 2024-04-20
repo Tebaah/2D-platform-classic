@@ -17,8 +17,6 @@ public partial class CoinController : Area2D
         // incializa los componentes hijos 
         _spriteController = GetNode<Sprite2D>("Sprite2D");
         _audioController = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
-
-        GD.Print(IsInGroup("GoldCoin"));
     }
 
     public async void OnPlayerEntered(Node body)
