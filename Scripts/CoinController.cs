@@ -36,12 +36,12 @@ public partial class CoinController : Area2D
             else if(IsInGroup("SilverCoin"))
             {
                 // aumenta la puntuacion del jugador
-                GD.Print($"Gold Coin: {silverCoinValue}");
+                GD.Print($"Silver Coin: {silverCoinValue}");
             }
             else if(IsInGroup("BronzeCoin"))
             {
                 // aumenta la puntuacion del jugador
-                GD.Print($"Gold Coin: {bronzeCoinValue}");
+                GD.Print($"Bronze Coin: {bronzeCoinValue}");
             }
         }
         // al finalizar la reproduccion del audio, se elimina el nodo

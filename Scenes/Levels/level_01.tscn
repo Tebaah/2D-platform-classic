@@ -1,10 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://dpt4hms4jabv7"]
+[gd_scene load_steps=26 format=3 uid="uid://dpt4hms4jabv7"]
 
 [ext_resource type="Texture2D" uid="uid://cs3ba61agcwci" path="res://Assets/Tiles/Ground/GrassAtlas.png" id="1_6qsiu"]
 [ext_resource type="Texture2D" uid="uid://bmi8tnr6lrvt7" path="res://Assets/Tiles/Ground/EnvironmetAtlas.png" id="2_by5de"]
 [ext_resource type="Texture2D" uid="uid://b2mstjlaii5d7" path="res://Assets/Tiles/Backgrounds/colored_grass.png" id="4_uqia8"]
 [ext_resource type="Texture2D" uid="uid://15kw2nt5per0" path="res://Assets/Tiles/Backgrounds/colored_land.png" id="5_jpbpg"]
+[ext_resource type="PackedScene" uid="uid://bai2oounm178a" path="res://Scenes/Objects/gold_coin.tscn" id="8_m3knu"]
+[ext_resource type="PackedScene" uid="uid://dmceiyyhjvt03" path="res://Scenes/Objects/silver_coin.tscn" id="9_mafwy"]
 [ext_resource type="Texture2D" uid="uid://cj18jshfl8jrr" path="res://Assets/Tiles/Ground/Grass/grassMid.png" id="9_svfuh"]
+[ext_resource type="PackedScene" uid="uid://b1ktohfqpjdgw" path="res://Scenes/Objects/bronze_coin.tscn" id="10_gwt4e"]
 [ext_resource type="Texture2D" uid="uid://cfgq0ionld0q2" path="res://Assets/Tiles/Examples Levels/137311.png" id="19_kquc1"]
 [ext_resource type="PackedScene" uid="uid://ceyl0u3tcuyoe" path="res://Scenes/Characters/Player/player.tscn" id="20_yt0vj"]
 
@@ -276,6 +279,44 @@ position = Vector2(246, 0)
 rotation = -0.00139323
 shape = SubResource("RectangleShape2D_pukcp")
 one_way_collision = true
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Gold" type="Node" parent="Coins"]
+
+[node name="GoldCoin" parent="Coins/Gold" instance=ExtResource("8_m3knu")]
+position = Vector2(2624, 960)
+
+[node name="Silver" type="Node" parent="Coins"]
+
+[node name="GoldCoin" parent="Coins/Silver" instance=ExtResource("9_mafwy")]
+position = Vector2(2848, 1216)
+
+[node name="GoldCoin2" parent="Coins/Silver" instance=ExtResource("9_mafwy")]
+position = Vector2(7168, 1216)
+
+[node name="GoldCoin3" parent="Coins/Silver" instance=ExtResource("9_mafwy")]
+position = Vector2(13376, 1216)
+
+[node name="Bronze" type="Node" parent="Coins"]
+
+[node name="GoldCoin" parent="Coins/Bronze" instance=ExtResource("10_gwt4e")]
+position = Vector2(1088, 1088)
+
+[node name="GoldCoin2" parent="Coins/Bronze" instance=ExtResource("10_gwt4e")]
+position = Vector2(1472, 1088)
+
+[node name="GoldCoin3" parent="Coins/Bronze" instance=ExtResource("10_gwt4e")]
+position = Vector2(1856, 1088)
+
+[node name="GoldCoin4" parent="Coins/Bronze" instance=ExtResource("10_gwt4e")]
+position = Vector2(4800, 1216)
+
+[node name="GoldCoin5" parent="Coins/Bronze" instance=ExtResource("10_gwt4e")]
+position = Vector2(6912, 832)
+
+[node name="GoldCoin6" parent="Coins/Bronze" instance=ExtResource("10_gwt4e")]
+position = Vector2(10304, 832)
 
 [node name="137311" type="Sprite2D" parent="."]
 visible = false
