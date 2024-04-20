@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bai2oounm178a"]
+
+[ext_resource type="Script" path="res://Scripts/CoinController.cs" id="1_j5rv1"]
+[ext_resource type="Texture2D" uid="uid://vpt8wsf248fs" path="res://Assets/Tiles/Items/coinGold.png" id="2_2jml5"]
+[ext_resource type="AudioStream" uid="uid://c8pn1vqj773gi" path="res://Assets/Audios/Effects/Fruit collect 1.wav" id="3_8dva3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hvmvs"]
+radius = 32.0156
+
+[node name="GoldCoin" type="Area2D" groups=["GoldCoin"]]
+script = ExtResource("1_j5rv1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2jml5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hvmvs")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8dva3")
+
+[connection signal="body_entered" from="." to="." method="OnPlayerEntered"]
