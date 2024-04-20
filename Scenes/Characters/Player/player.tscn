@@ -1,43 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://ceyl0u3tcuyoe"]
+[gd_scene load_steps=13 format=3 uid="uid://ceyl0u3tcuyoe"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterController.cs" id="1_syjx6"]
 [ext_resource type="AudioStream" uid="uid://cbcif323ta3ri" path="res://Assets/Audios/Effects/Jump 1.wav" id="2_b7cwi"]
-[ext_resource type="Texture2D" uid="uid://cfkqcyjyydpli" path="res://Assets/Tiles/Vector/vector_characters.svg" id="2_fh3fq"]
 [ext_resource type="AudioStream" uid="uid://dm2xlmnwxraol" path="res://Assets/Audios/Effects/Hit damage 1.wav" id="3_vsi5s"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hhq4p"]
-atlas = ExtResource("2_fh3fq")
-region = Rect2(240, 0, 80, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7bo3l"]
-atlas = ExtResource("2_fh3fq")
-region = Rect2(320, 0, 80, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eljuv"]
-atlas = ExtResource("2_fh3fq")
-region = Rect2(0, 0, 80, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bytbl"]
-atlas = ExtResource("2_fh3fq")
-region = Rect2(80, 0, 80, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hjje0"]
-atlas = ExtResource("2_fh3fq")
-region = Rect2(160, 0, 80, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ll4iy"]
-atlas = ExtResource("2_fh3fq")
-region = Rect2(400, 0, 80, 126)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bslhp"]
-atlas = ExtResource("2_fh3fq")
-region = Rect2(480, 0, 80, 126)
+[ext_resource type="Texture2D" uid="uid://by70pqquw0vnm" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_duck.png" id="4_nukjd"]
+[ext_resource type="Texture2D" uid="uid://hk3t4s4c6ua4" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_hit.png" id="5_ei5wo"]
+[ext_resource type="Texture2D" uid="uid://bcfcgekes874y" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_front.png" id="6_2i0f0"]
+[ext_resource type="Texture2D" uid="uid://bglchl7lfw7h5" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_stand.png" id="7_jm4d4"]
+[ext_resource type="Texture2D" uid="uid://cbkis7vokippx" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_jump.png" id="8_ntr6d"]
+[ext_resource type="Texture2D" uid="uid://dgj8wcryfcfuk" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_walk1.png" id="9_ssr5a"]
+[ext_resource type="Texture2D" uid="uid://ee6lquo3p8iu" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_walk2.png" id="10_j4bc4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q828r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hhq4p")
+"texture": ExtResource("4_nukjd")
 }],
 "loop": true,
 "name": &"duck",
@@ -45,7 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7bo3l")
+"texture": ExtResource("5_ei5wo")
 }],
 "loop": true,
 "name": &"hit",
@@ -53,10 +31,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eljuv")
+"texture": ExtResource("6_2i0f0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bytbl")
+"texture": ExtResource("7_jm4d4")
 }],
 "loop": true,
 "name": &"idle",
@@ -64,7 +42,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hjje0")
+"texture": ExtResource("8_ntr6d")
 }],
 "loop": true,
 "name": &"jump",
@@ -72,10 +50,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ll4iy")
+"texture": ExtResource("9_ssr5a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bslhp")
+"texture": ExtResource("10_j4bc4")
 }],
 "loop": true,
 "name": &"walk",
@@ -83,12 +61,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mm6rm"]
-radius = 22.0
-height = 94.0
+radius = 34.0
+height = 142.0
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(-4, 0)
-collision_mask = 2
+position = Vector2(-4, -1)
+collision_mask = 6
 script = ExtResource("1_syjx6")
 speedWalk = 250.0
 speedJump = 500.0
@@ -96,10 +74,11 @@ effects = Array[AudioStreamWAV]([ExtResource("2_b7cwi"), ExtResource("3_vsi5s")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q828r")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 58)
 shape = SubResource("CapsuleShape2D_mm6rm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
