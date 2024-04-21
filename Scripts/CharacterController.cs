@@ -12,6 +12,8 @@ public partial class CharacterController : CharacterBody2D
     public AudioStreamPlayer audioController = new AudioStreamPlayer();
     [Export]public AudioStreamWav[] effects;
 
+    public bool collision2;
+
     // variables de fisica
     public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
@@ -22,12 +24,16 @@ public partial class CharacterController : CharacterBody2D
         AddChild(audioController);
     }
     public override void _PhysicsProcess(double delta)
-    {
-        
+    {        
         MotionController(delta);
-        AnimationController();
-;
+        AnimationController(); 
 
+        for (int i = 0; i < GetSlideCollisionCount(); i++)
+        {
+            KinematicCollision2D collision = GetSlideCollision(i);
+            // GD.Print("Collided with: ", (collision.GetCollider() as Node).IsInGroup("Enemy"));            
+            collision2 = ((Node)collision.GetCollider()).IsInGroup("Enemy");
+        }
     }
 
     public void MotionController(double delta)
@@ -37,20 +43,30 @@ public partial class CharacterController : CharacterBody2D
         float direction = Input.GetAxis("left", "right");
         velocity.X = direction * speedWalk;
 
+        
         if(!IsOnFloor())
         {
             velocity.Y += gravity * (float)delta;
         }
 
+        // TODO ajustar doble salto sobre enemigos 
         if(Input.IsActionJustPressed("jump") && IsOnFloor())
         {
             velocity.Y = -speedJump;
             audioController.Stream = effects[0];
             audioController.Play();
+                     
+        }
+        if(collision2)
+        {
+            velocity.Y = -speedJump;
+            audioController.Stream = effects[0];
+            audioController.Play();
+            collision2 = false;  
         }
 
         // TODO hit contra enemigos
-
+        
         Velocity = velocity;
         MoveAndSlide();
 

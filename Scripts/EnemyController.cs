@@ -12,6 +12,9 @@ public partial class EnemyController : CharacterBody2D
     // variables de animacion y audio
     private AnimatedSprite2D _animationController;
 
+    // variables globales
+    private Global _global;
+
     // variables de fisica
     public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
@@ -19,6 +22,7 @@ public partial class EnemyController : CharacterBody2D
     {   
         // inicializa los controladores de componentes
         _animationController = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        _global = GetNode<Global>("/root/Global");
 
         // crea un numero random para la velocidad y distancia
         RandomNumberGenerator random = new RandomNumberGenerator();

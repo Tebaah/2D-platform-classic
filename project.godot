@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 <<<<<<<HEADrun/main_scene="res://Scenes/Characters/Player/player.tscn"
 
+[autoload]
+
+Global="*res://Scripts/Global.cs"
+
 [display]
 
 window/size/viewport_width=1920
