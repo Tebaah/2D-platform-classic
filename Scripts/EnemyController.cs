@@ -84,14 +84,29 @@ public partial class EnemyController : CharacterBody2D
         bool isMoving = Velocity.X != 0;
 
         // controla la animacion del enemigo
-        if(!isMoving && IsOnFloor())
+        if(IsInGroup("Ground"))
         {
-            _animationController.Play("idle");
+            if(!isMoving && IsOnFloor())
+            {
+                _animationController.Play("idle");
+            }
+            else if(isMoving && IsOnFloor())
+            {
+                _animationController.Play("walk");
+                _animationController.FlipH = Velocity.X > 0;
+            }
         }
-        else if(isMoving && IsOnFloor())
+        else if(IsInGroup("Air"))
         {
-            _animationController.Play("walk");
-            _animationController.FlipH = Velocity.X > 0;
+            if(!isMoving)
+            {
+                _animationController.Play("idle");
+            }
+            else if(isMoving)
+            {
+                _animationController.Play("walk");
+                _animationController.FlipH = Velocity.X > 0;
+            }
         }
     }
 }
