@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b71s6k1qmu1iw"]
 
 [ext_resource type="Texture2D" uid="uid://cj18jshfl8jrr" path="res://Assets/Tiles/Ground/Grass/grassMid.png" id="1_t8hud"]
-[ext_resource type="PackedScene" uid="uid://cjctn802xh773" path="res://Scenes/Characters/mouse.tscn" id="2_iq4bm"]
+[ext_resource type="PackedScene" uid="uid://cjctn802xh773" path="res://Scenes/Characters/Enemy/mouse.tscn" id="2_iq4bm"]
 [ext_resource type="PackedScene" uid="uid://ceyl0u3tcuyoe" path="res://Scenes/Characters/Player/player.tscn" id="2_yyf0q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8172v"]

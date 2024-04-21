@@ -6,8 +6,8 @@ public partial class EnemyController : CharacterBody2D
     // variables de movimiento
     private float _initialPosition;
     private float _endPosition;
-    private float _distance = 300;
-    private float _speedMovement = 50;
+    private float _distance;
+    private float _speedMovement;
 
     // variables de animacion y audio
     private AnimatedSprite2D _animationController;
@@ -25,14 +25,12 @@ public partial class EnemyController : CharacterBody2D
         random.Randomize();
         
         // asigna valores random a las variables
-        _speedMovement = random.RandiRange(50, 100);
+        _speedMovement = random.RandiRange(75, 150);
         _distance = random.RandiRange(300, 500);
 
         // asigna las posiciones iniciales y finales
         _initialPosition = Position.X;
         _endPosition = _initialPosition - _distance;
-
-        GD.Print(_speedMovement);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -46,7 +44,7 @@ public partial class EnemyController : CharacterBody2D
         Vector2 velocity = Velocity;
 
         // aplica gravedad al enemigo
-        if(!IsOnFloor())
+        if(!IsOnFloor() && IsInGroup("Ground"))
         {
             velocity.Y += gravity * (float)delta;
         }
