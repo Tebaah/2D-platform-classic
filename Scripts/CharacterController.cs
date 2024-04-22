@@ -6,12 +6,14 @@ public partial class CharacterController : CharacterBody2D
     // variables de movimiento
     [Export] public float speedWalk;
     [Export] public float speedJump;
+    public bool isJumping = false;
 
     // variables de animacion y audio
     private AnimatedSprite2D _animationController;
     public AudioStreamPlayer audioController = new AudioStreamPlayer();
     [Export]public AudioStreamWav[] effects;
 
+    // variables de colision
     public bool collision2;
 
     // variables de fisica
@@ -50,19 +52,21 @@ public partial class CharacterController : CharacterBody2D
         }
 
         // TODO ajustar doble salto sobre enemigos 
+
         if(Input.IsActionJustPressed("jump") && IsOnFloor())
         {
             velocity.Y = -speedJump;
             audioController.Stream = effects[0];
             audioController.Play();
-                     
+            isJumping = true;
         }
-        if(collision2)
+        else if(collision2 && isJumping == true)
         {
             velocity.Y = -speedJump;
             audioController.Stream = effects[0];
             audioController.Play();
-            collision2 = false;  
+            collision2 = false;
+            isJumping = false;
         }
 
         // TODO hit contra enemigos
