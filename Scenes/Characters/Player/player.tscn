@@ -75,7 +75,7 @@ effects = Array[AudioStreamWAV]([ExtResource("2_b7cwi"), ExtResource("3_vsi5s")]
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -127)
 sprite_frames = SubResource("SpriteFrames_q828r")
-animation = &"idle"
+animation = &"hit"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
