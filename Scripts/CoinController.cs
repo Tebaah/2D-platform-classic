@@ -12,11 +12,15 @@ public partial class CoinController : Area2D
     public int silverCoinValue = 2;
     public int bronzeCoinValue = 1;
 
+    // variables globales
+    private Global _global;
+
     public override void _Ready()
     {
         // incializa los componentes hijos 
         _spriteController = GetNode<Sprite2D>("Sprite2D");
         _audioController = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+        _global = GetNode<Global>("/root/Global");
     }
 
     public async void OnPlayerEntered(Node body)
@@ -31,17 +35,17 @@ public partial class CoinController : Area2D
             if(IsInGroup("GoldCoin"))
             {
                 // aumenta la puntuacion del jugador
-                GD.Print($"Gold Coin: {goldCoinValue}");
+                _global.score += goldCoinValue;
             }
             else if(IsInGroup("SilverCoin"))
             {
                 // aumenta la puntuacion del jugador
-                GD.Print($"Silver Coin: {silverCoinValue}");
+                _global.score += silverCoinValue;
             }
             else if(IsInGroup("BronzeCoin"))
             {
                 // aumenta la puntuacion del jugador
-                GD.Print($"Bronze Coin: {bronzeCoinValue}");
+                _global.score += bronzeCoinValue;
             }
         }
         // al finalizar la reproduccion del audio, se elimina el nodo
