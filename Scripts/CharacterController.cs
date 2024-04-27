@@ -14,10 +14,10 @@ public partial class CharacterController : CharacterBody2D
     [Export]public AudioStreamWav[] effects;
 
     // variables de colision
-    public bool collisionWithMobs;
-    public float collisionMobsY;
-    public float collisionMobsX;
-    public bool isNextToMobs = true;
+    private bool _isOverTheEnemy = false;
+
+    // variable global
+    private Global _global;
 
     // variables de fisica
     public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -27,27 +27,21 @@ public partial class CharacterController : CharacterBody2D
     {
         _animationController = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         AddChild(audioController);
+        _global = GetNode<Global>("/root/Global");
     }
     public override void _PhysicsProcess(double delta)
     {        
         MotionController(delta);
         AnimationController(); 
-
-        for (int i = 0; i < GetSlideCollisionCount(); i++)
-        {
-            KinematicCollision2D collision = GetSlideCollision(i);
-            collisionWithMobs = ((Node)collision.GetCollider()).IsInGroup("Enemy");
-            collisionMobsY = collision.GetPosition().Y;
-            collisionMobsX = collision.GetPosition().X;
-        }
+        CollisionWithElement();
     }
 
     public void MotionController(double delta)
     {
         Vector2 velocity = Velocity;
 
-        float direction = Input.GetAxis("left", "right");
-        velocity.X = direction * speedWalk;
+        float directionHor = Input.GetAxis("left", "right");
+        velocity.X = directionHor * speedWalk;
 
         // aplicar gravedad
         if(!IsOnFloor())
@@ -55,34 +49,22 @@ public partial class CharacterController : CharacterBody2D
             velocity.Y += gravity * (float)delta;
         }
 
-        // 
+        // salto y doble salto
         if(Input.IsActionJustPressed("jump") && IsOnFloor())
         {
             velocity.Y = -speedJump;
             audioController.Stream = effects[0];
             audioController.Play();
         }
-        else if(collisionWithMobs && Position.Y < collisionMobsY)
+        else if(_isOverTheEnemy == true)
         {
             velocity.Y = -speedJump;
             audioController.Stream = effects[0];
             audioController.Play();
-            collisionWithMobs = false;
+            _isOverTheEnemy = false;
         }
 
         // TODO hit contra enemigos
-        if(collisionWithMobs)
-        {
-            if(Position.X < collisionMobsX && isNextToMobs == true)
-            {   
-  
-            }
-            else if(Position.X > collisionMobsX && isNextToMobs == true)
-            {
-
-            }      
-            collisionWithMobs = false;    
-        }
 
         Velocity = velocity;
         MoveAndSlide();
@@ -108,5 +90,37 @@ public partial class CharacterController : CharacterBody2D
         }
 
         //TODO: animacion hit contra enemigos
+    }
+
+    public void CollisionWithElement()
+    {
+        for (int i = 0; i < GetSlideCollisionCount(); i++)
+        {
+            KinematicCollision2D collision = GetSlideCollision(i);
+            
+            if(((Node)collision.GetCollider()).IsInGroup("Enemy"))
+            {
+                if(Position.Y <= collision.GetPosition().Y)
+                {
+                    _isOverTheEnemy = true;
+                    EnemyController enemy = (EnemyController)collision.GetCollider();
+                    enemy.Dead();
+                }
+                else if(collision.GetPosition().X > Position.X)
+                {
+                    _global.lifes -= 1;
+                }
+                else if(collision.GetPosition().X < Position.X)
+                {
+                    _global.lifes -= 1;
+                }
+                
+            }
+            else if(((Node)collision.GetCollider()).IsInGroup("Coin"))
+            {
+                GD.Print("Colision con moneda");
+            }
+
+        }
     }
 }
