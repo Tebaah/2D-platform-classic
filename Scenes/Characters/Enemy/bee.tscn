@@ -1,11 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuqg7vinnktd5"]
+[gd_scene load_steps=8 format=3 uid="uid://cuqg7vinnktd5"]
 
 [ext_resource type="Texture2D" uid="uid://dtjp7dk6p5w0e" path="res://Assets/Tiles/Enemies/bee.png" id="1_1rk0j"]
 [ext_resource type="Script" path="res://Scripts/EnemyController.cs" id="1_13mld"]
+[ext_resource type="Texture2D" uid="uid://d3d1n68tok0gu" path="res://Assets/Tiles/Enemies/bee_dead.png" id="2_52lhe"]
 [ext_resource type="Texture2D" uid="uid://dadpt8omynfd0" path="res://Assets/Tiles/Enemies/bee_move.png" id="2_680pj"]
+[ext_resource type="AudioStream" uid="uid://clgh884p6prok" path="res://Assets/Audios/Effects/Boss hit 1.wav" id="4_agwpc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n2kuw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_52lhe")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_1rk0j")
@@ -26,9 +36,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bncyv"]
-radius = 24.0
-height = 80.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ij0sk"]
+size = Vector2(46, 83)
 
 [node name="Bee" type="CharacterBody2D" groups=["Air", "Enemy"]]
 collision_layer = 4
@@ -36,11 +45,16 @@ collision_mask = 3
 script = ExtResource("1_13mld")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7.62939e-06)
+rotation = -0.00591355
 sprite_frames = SubResource("SpriteFrames_n2kuw")
-animation = &"walk"
+animation = &"dead"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-6, 4)
+position = Vector2(-3.5, 6)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_bncyv")
+shape = SubResource("RectangleShape2D_ij0sk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_agwpc")
