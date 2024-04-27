@@ -6,7 +6,8 @@ public partial class CharacterController : CharacterBody2D
     // variables de movimiento
     [Export] public float speedWalk;
     [Export] public float speedJump;
-    private bool _isHit = false;
+    private bool _isHitLeft = false;
+    private bool _isHitRight = false;
  
 
     // variables de animacion y audio
@@ -23,9 +24,10 @@ public partial class CharacterController : CharacterBody2D
     // variables de fisica
     public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
-    // methods
+    // metodos
     public override void _Ready()
     {
+        // inicializar variables
         _animationController = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         AddChild(audioController);
         _global = GetNode<Global>("/root/Global");
@@ -41,7 +43,7 @@ public partial class CharacterController : CharacterBody2D
     {
         Vector2 velocity = Velocity;
 
-
+        // movimiento horizontal del personaje
         float directionHor = Input.GetAxis("left", "right");
         velocity.X = directionHor * speedWalk;
         
@@ -67,12 +69,22 @@ public partial class CharacterController : CharacterBody2D
             _isOverTheEnemy = false;
         }
 
-        // TODO hit contra enemigos desde lado derecho
-
-        if(_isHit == true)
+        // impulso al ser golpeado por un enemigo
+        if(_isHitLeft == true)
         {
-            velocity.X = -7500;
-            _isHit = false;
+            velocity.Y = -200;
+            velocity.X = -10000;
+            audioController.Stream = effects[1];
+            audioController.Play();
+            _isHitLeft = false;
+        }
+        else if(_isHitRight == true)
+        {
+            velocity.Y = -200;
+            velocity.X = 10000;
+            audioController.Stream = effects[1];
+            audioController.Play();
+            _isHitRight = false;
         }
 
         Velocity = velocity;
@@ -84,49 +96,59 @@ public partial class CharacterController : CharacterBody2D
     {
         bool isMoving = Velocity.X != 0;
 
-        if(!isMoving && IsOnFloor())
+        // si esta quieto, en el suelo y sin tocar un enemigo 
+        if(!isMoving && IsOnFloor() &&_isHitLeft == false && _isHitRight == false)
         {
             _animationController.Play("idle");
         }
-        else if(isMoving && IsOnFloor())
+        // si esta en movimiento, en el suelo y sin tocar un emeigo
+        else if(isMoving && IsOnFloor() && _isHitLeft == false && _isHitRight == false)
         {
             _animationController.Play("walk");
             _animationController.FlipH = Velocity.X < 0;
         }
+        // si no esta en el suelo, dependiendo de tocar o no un enemigo
         else if(!IsOnFloor())
         {
-            _animationController.Play("jump");
+            if(_isHitLeft == true || _isHitRight == true)
+            {
+                _animationController.Play("hit");
+            }
+            else 
+            {
+                _animationController.Play("jump");
+            }
+            
         }
-        else if(_isHit == true)
-        {
-            _animationController.Play("hit");
-        }
-
-        //TODO: animacion hit contra enemigos
     }
 
     public void CollisionWithElement()
     {
+        // detecta la colision 
         for (int i = 0; i < GetSlideCollisionCount(); i++)
         {
             KinematicCollision2D collision = GetSlideCollision(i);
             
+            // si colisiona con un enemigo
             if(((Node)collision.GetCollider()).IsInGroup("Enemy"))
             {
+                // establece los siguientes valores para los eventos de colision en el eje "y" y "x"
+                // sobre el eje "y"
                 if(Position.Y <= collision.GetPosition().Y)
                 {
                     _isOverTheEnemy = true;
                     EnemyController enemy = (EnemyController)collision.GetCollider();
                     enemy.Dead();
                 }
+                // sobre el eje "x"
                 else if(collision.GetPosition().X > Position.X)
                 {
-                    _isHit = true;
+                    _isHitLeft = true;
                     _global.lifes -= 1;
                 }
                 else if(collision.GetPosition().X < Position.X)
                 {
-                    _isHit = true;
+                    _isHitRight = true;
                     _global.lifes -= 1;
                 }
                 

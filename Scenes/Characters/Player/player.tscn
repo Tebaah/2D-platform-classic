@@ -85,4 +85,3 @@ limit_left = 0
 limit_right = 17024
 limit_bottom = 1408
 position_smoothing_enabled = true
-position_smoothing_speed = 10.0

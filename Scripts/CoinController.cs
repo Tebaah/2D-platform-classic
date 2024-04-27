@@ -31,7 +31,7 @@ public partial class CoinController : Area2D
             _spriteController.Visible = false;
             _audioController.Play();
 
-            // TODO vincular con script global para aumentar la puntuacion
+            // aumenta el puntaje del jugador
             if(IsInGroup("GoldCoin"))
             {
                 // aumenta la puntuacion del jugador
