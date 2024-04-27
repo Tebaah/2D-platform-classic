@@ -6,6 +6,7 @@ public partial class CharacterController : CharacterBody2D
     // variables de movimiento
     [Export] public float speedWalk;
     [Export] public float speedJump;
+    private bool _isHit = false;
  
 
     // variables de animacion y audio
@@ -40,8 +41,10 @@ public partial class CharacterController : CharacterBody2D
     {
         Vector2 velocity = Velocity;
 
+
         float directionHor = Input.GetAxis("left", "right");
         velocity.X = directionHor * speedWalk;
+        
 
         // aplicar gravedad
         if(!IsOnFloor())
@@ -64,7 +67,13 @@ public partial class CharacterController : CharacterBody2D
             _isOverTheEnemy = false;
         }
 
-        // TODO hit contra enemigos
+        // TODO hit contra enemigos desde lado derecho
+
+        if(_isHit == true)
+        {
+            velocity.X = -7500;
+            _isHit = false;
+        }
 
         Velocity = velocity;
         MoveAndSlide();
@@ -88,6 +97,10 @@ public partial class CharacterController : CharacterBody2D
         {
             _animationController.Play("jump");
         }
+        else if(_isHit == true)
+        {
+            _animationController.Play("hit");
+        }
 
         //TODO: animacion hit contra enemigos
     }
@@ -108,19 +121,16 @@ public partial class CharacterController : CharacterBody2D
                 }
                 else if(collision.GetPosition().X > Position.X)
                 {
+                    _isHit = true;
                     _global.lifes -= 1;
                 }
                 else if(collision.GetPosition().X < Position.X)
                 {
+                    _isHit = true;
                     _global.lifes -= 1;
                 }
                 
             }
-            else if(((Node)collision.GetCollider()).IsInGroup("Coin"))
-            {
-                GD.Print("Colision con moneda");
-            }
-
         }
     }
 }

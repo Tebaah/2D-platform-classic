@@ -36,9 +36,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0ujq"]
-radius = 24.0
-height = 91.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jt782"]
+size = Vector2(92, 38.5)
 
 [node name="Mouse" type="CharacterBody2D" groups=["Enemy", "Ground"]]
 position = Vector2(0, -64)
@@ -47,15 +46,13 @@ collision_mask = 3
 script = ExtResource("1_uv5qa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 65)
 sprite_frames = SubResource("SpriteFrames_nenxo")
-animation = &"dead"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 105)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_b0ujq")
+position = Vector2(-7, 44.25)
+shape = SubResource("RectangleShape2D_jt782")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_66dwi")
