@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://ceyl0u3tcuyoe"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterController.cs" id="1_syjx6"]
+[ext_resource type="AudioStream" uid="uid://cbcif323ta3ri" path="res://Assets/Audios/Effects/Jump 1.wav" id="2_b7cwi"]
+[ext_resource type="AudioStream" uid="uid://dm2xlmnwxraol" path="res://Assets/Audios/Effects/Hit damage 1.wav" id="3_vsi5s"]
+[ext_resource type="Texture2D" uid="uid://by70pqquw0vnm" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_duck.png" id="4_nukjd"]
+[ext_resource type="Texture2D" uid="uid://hk3t4s4c6ua4" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_hit.png" id="5_ei5wo"]
+[ext_resource type="Texture2D" uid="uid://bcfcgekes874y" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_front.png" id="6_2i0f0"]
+[ext_resource type="Texture2D" uid="uid://bglchl7lfw7h5" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_stand.png" id="7_jm4d4"]
+[ext_resource type="Texture2D" uid="uid://cbkis7vokippx" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_jump.png" id="8_ntr6d"]
+[ext_resource type="Texture2D" uid="uid://dgj8wcryfcfuk" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_walk1.png" id="9_ssr5a"]
+[ext_resource type="Texture2D" uid="uid://ee6lquo3p8iu" path="res://Assets/Tiles/Players/128x256/Green/alienGreen_walk2.png" id="10_j4bc4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q828r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nukjd")
+}],
+"loop": true,
+"name": &"duck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ei5wo")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_2i0f0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jm4d4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ntr6d")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ssr5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j4bc4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dk3r"]
+size = Vector2(64, 136)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 14
+script = ExtResource("1_syjx6")
+speedWalk = 250.0
+speedJump = 500.0
+effects = Array[AudioStreamWAV]([ExtResource("2_b7cwi"), ExtResource("3_vsi5s")])
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -128)
+sprite_frames = SubResource("SpriteFrames_q828r")
+animation = &"hit"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -68)
+shape = SubResource("RectangleShape2D_4dk3r")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_right = 17024
+limit_bottom = 1408
+position_smoothing_enabled = true

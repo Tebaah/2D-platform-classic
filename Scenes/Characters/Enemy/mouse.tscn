@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjctn802xh773"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyController.cs" id="1_uv5qa"]
+[ext_resource type="Texture2D" uid="uid://ctop535rpys5r" path="res://Assets/Tiles/Enemies/mouse.png" id="1_xaive"]
+[ext_resource type="Texture2D" uid="uid://c5ybtl6jg2pbj" path="res://Assets/Tiles/Enemies/mouse_dead.png" id="2_hmci3"]
+[ext_resource type="Texture2D" uid="uid://cwi0lw7ayjdgf" path="res://Assets/Tiles/Enemies/mouse_move.png" id="2_owe5t"]
+[ext_resource type="AudioStream" uid="uid://clgh884p6prok" path="res://Assets/Audios/Effects/Boss hit 1.wav" id="4_66dwi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nenxo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hmci3")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xaive")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xaive")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_owe5t")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jt782"]
+size = Vector2(92, 38.5)
+
+[node name="Mouse" type="CharacterBody2D" groups=["Enemy", "Ground"]]
+position = Vector2(0, -64)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_uv5qa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nenxo")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 44.25)
+shape = SubResource("RectangleShape2D_jt782")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_66dwi")

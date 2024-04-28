@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://bum6qbfkttkpq"
+path="res://.godot/imported/frog_move.png-c1d3a8f6b709697f093d5517f93d12ee.image"
+
+[deps]
+
+source_file="res://Assets/Tiles/Enemies/frog_move.png"
+dest_files=["res://.godot/imported/frog_move.png-c1d3a8f6b709697f093d5517f93d12ee.image"]
+
+[params]
+

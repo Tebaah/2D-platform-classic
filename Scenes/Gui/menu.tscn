@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce35fxodf7et1"]
+
+[ext_resource type="Script" path="res://Scripts/Menu.cs" id="1_4ckuc"]
+
+[node name="Menu" type="Node"]
+script = ExtResource("1_4ckuc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "MENU"
+
+[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "START
+"
+
+[connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/VBoxContainer/Button" to="." method="OnButtonPressed"]

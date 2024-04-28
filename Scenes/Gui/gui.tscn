@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd31d1e6gfejo"]
+
+[ext_resource type="Script" path="res://Scripts/GuiController.cs" id="1_7i81n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbt06"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 0.243137)
+
+[node name="Gui" type="Node"]
+script = ExtResource("1_7i81n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.33
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wbt06")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+text = "score	"
+
+[node name="Life" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+text = "life	"
+
+[node name="Time" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+text = "time	"
