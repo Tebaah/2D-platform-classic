@@ -110,15 +110,7 @@ public partial class CharacterController : CharacterBody2D
         // si no esta en el suelo, dependiendo de tocar o no un enemigo
         else if(!IsOnFloor())
         {
-            if(_isHitLeft == true || _isHitRight == true)
-            {
-                _animationController.Play("hit");
-            }
-            else 
-            {
-                _animationController.Play("jump");
-            }
-            
+            _animationController.Play("jump");
         }
     }
 
