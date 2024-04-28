@@ -131,8 +131,9 @@ public partial class EnemyController : CharacterBody2D
     public async void Dead()
     {  
         // se modifica el valor de "isDead", se aumenta la puntuacion, se activa el audio y se elimina el nodo al finalizar el audio
-        isDead = true;      
+        isDead = true;
         _global.score += _scoreValue;
+        GD.Print(_scoreValue);
         _audioController.Play();
         await ToSignal(_audioController, "finished");
         QueueFree();

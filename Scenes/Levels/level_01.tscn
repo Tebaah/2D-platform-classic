@@ -345,10 +345,10 @@ position = Vector2(10304, 832)
 [node name="Mouse" type="Node" parent="Enemies"]
 
 [node name="Mouse" parent="Enemies/Mouse" instance=ExtResource("9_k0k03")]
-position = Vector2(1432, 1152)
+position = Vector2(1416, 1088)
 
 [node name="Mouse2" parent="Enemies/Mouse" instance=ExtResource("9_k0k03")]
-position = Vector2(2136, 1224)
+position = Vector2(1784, 1088)
 
 [node name="Mouse3" parent="Enemies/Mouse" instance=ExtResource("9_k0k03")]
 position = Vector2(4184, 1216)
@@ -371,7 +371,7 @@ position = Vector2(13448, 1216)
 [node name="Bee" type="Node" parent="Enemies"]
 
 [node name="Bee" parent="Enemies/Bee" instance=ExtResource("12_hb8hk")]
-position = Vector2(1776, 1072)
+position = Vector2(1576, 1064)
 
 [node name="Bee2" parent="Enemies/Bee" instance=ExtResource("12_hb8hk")]
 position = Vector2(2880, 944)
