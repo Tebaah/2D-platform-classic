@@ -40,18 +40,19 @@ animations = [{
 size = Vector2(92, 38.5)
 
 [node name="Mouse" type="CharacterBody2D" groups=["Enemy", "Ground"]]
-position = Vector2(0, -64)
+position = Vector2(1, 2)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_uv5qa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -66)
 sprite_frames = SubResource("SpriteFrames_nenxo")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 44.25)
+position = Vector2(-6, -21)
 shape = SubResource("RectangleShape2D_jt782")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
