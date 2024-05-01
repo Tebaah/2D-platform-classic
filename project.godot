@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="2d-platform-classic"
-run/main_scene="res://Scenes/Levels/level_02.tscn"
+run/main_scene="res://Scenes/Levels/game.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 <<<<<<<HEADrun/main_scene="res://Scenes/Characters/Player/player.tscn"

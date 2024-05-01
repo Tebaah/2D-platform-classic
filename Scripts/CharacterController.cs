@@ -7,8 +7,7 @@ public partial class CharacterController : CharacterBody2D
     [Export] public float speedWalk;
     [Export] public float speedJump;
     private bool _isHitLeft = false;
-    private bool _isHitRight = false;
- 
+    private bool _isHitRight = false; 
 
     // variables de animacion y audio
     private AnimatedSprite2D _animationController;
@@ -90,6 +89,7 @@ public partial class CharacterController : CharacterBody2D
         Velocity = velocity;
         MoveAndSlide();
 
+
     }    
 
     public void AnimationController()
@@ -108,7 +108,7 @@ public partial class CharacterController : CharacterBody2D
             _animationController.FlipH = Velocity.X < 0;
         }
         // si no esta en el suelo, dependiendo de tocar o no un enemigo
-        else if(!IsOnFloor())
+        else if(!IsOnFloor() && _isHitLeft == false && _isHitRight == false)
         {
             _animationController.Play("jump");
         }
@@ -124,27 +124,33 @@ public partial class CharacterController : CharacterBody2D
             // si colisiona con un enemigo
             if(((Node)collision.GetCollider()).IsInGroup("Enemy"))
             {
-                // establece los siguientes valores para los eventos de colision en el eje "y" y "x"
-                // sobre el eje "y"
-                if(Position.Y <= collision.GetPosition().Y)
+                while(GetSlideCollisionCount() == 1)
                 {
-                    _isOverTheEnemy = true;
-                    EnemyController enemy = (EnemyController)collision.GetCollider();
-                    enemy.Dead();
-                }
-                // sobre el eje "x"
-                else if(collision.GetPosition().X > Position.X)
-                {
-                    _isHitLeft = true;
-                    _global.lifes -= 1;
-                }
-                else if(collision.GetPosition().X < Position.X)
-                {
-                    _isHitRight = true;
-                    _global.lifes -= 1;
+                    // establece los siguientes valores para los eventos de colision en el eje "y" y "x"
+                    // sobre el eje "y"
+                    if(Position.Y <= collision.GetPosition().Y)
+                    {
+                        _isOverTheEnemy = true;
+                        EnemyController enemy = (EnemyController)collision.GetCollider();
+                        enemy.Dead();
+                    }
+                    // sobre el eje "x"
+                    else if(collision.GetPosition().X > Position.X)
+                    {
+                        _isHitLeft = true;
+                        _global.lifes -= 1;
+                    }
+                    else if(collision.GetPosition().X < Position.X)
+                    {
+                        _isHitRight = true;
+                        _global.lifes -= 1;
+                    }
+
+                    break;
                 }
                 
             }
         }
     }
+
 }

@@ -60,8 +60,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dk3r"]
-size = Vector2(64, 136)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s6fs"]
+size = Vector2(64, 135)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 14
@@ -77,8 +77,8 @@ animation = &"hit"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -68)
-shape = SubResource("RectangleShape2D_4dk3r")
+position = Vector2(2, -67.5)
+shape = SubResource("RectangleShape2D_8s6fs")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
