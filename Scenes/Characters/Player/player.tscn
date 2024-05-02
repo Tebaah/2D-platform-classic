@@ -60,8 +60,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s6fs"]
-size = Vector2(64, 135)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_558eo"]
+size = Vector2(66, 134)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 14
@@ -77,12 +77,12 @@ animation = &"hit"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -67.5)
-shape = SubResource("RectangleShape2D_8s6fs")
+position = Vector2(2, -67)
+shape = SubResource("RectangleShape2D_558eo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
 limit_top = 0
-limit_right = 17024
+limit_right = 15360
 limit_bottom = 1408
 position_smoothing_enabled = true
