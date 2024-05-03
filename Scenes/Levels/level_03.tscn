@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bkjexa2j3egw4"]
+[gd_scene load_steps=46 format=3 uid="uid://bkjexa2j3egw4"]
 
 [ext_resource type="Texture2D" uid="uid://cj18jshfl8jrr" path="res://Assets/Tiles/Ground/Grass/grassMid.png" id="1_3ykru"]
 [ext_resource type="Texture2D" uid="uid://7qliq8d3tpcx" path="res://Assets/Tiles/Ground/Grass/grassCenter.png" id="2_j6yho"]
@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://b2mstjlaii5d7" path="res://Assets/Tiles/Backgrounds/colored_grass.png" id="11_jmchf"]
 [ext_resource type="Texture2D" uid="uid://balipwaprej4m" path="res://Assets/Tiles/Ground/Stone/stoneHalf_right.png" id="11_yk5w3"]
 [ext_resource type="Texture2D" uid="uid://bamru1dwg001d" path="res://Assets/Tiles/Tiles/lavaTop_high.png" id="12_07frr"]
-[ext_resource type="PackedScene" uid="uid://ceyl0u3tcuyoe" path="res://Scenes/Characters/Player/player.tscn" id="13_0jmgv"]
 [ext_resource type="Texture2D" uid="uid://cml27mll0cjwa" path="res://Assets/Tiles/Tiles/lava.png" id="14_bvolp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_unfje"]
@@ -257,6 +256,3 @@ centered = false
 [node name="Bee" type="Node" parent="Enemies"]
 
 [node name="Extras" type="Node" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("13_0jmgv")]
-position = Vector2(10514.2, 876.071)
