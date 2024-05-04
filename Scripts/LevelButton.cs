@@ -5,16 +5,26 @@ public partial class LevelButton : TextureButton
 {
 
     private Global _global;
-    public Label labelButton;
-
+    [Export] public int levelId;
     public override void _Ready()
     {
-        labelButton = GetNode<Label>("Label");
         _global = GetNode<Global>("/root/Global");
+
+        if(levelId == _global.currentLevel)
+        {
+            Disabled = false;
+        }
+        else
+        {
+            Disabled = true;
+        }
+
     }
+
     public void OnButtonPressed()
     {
-        _global.levelId = int.Parse(labelButton.Text);
+        _global.levelId = levelId;
         GetTree().ChangeSceneToFile("res://Scenes/Levels/game.tscn");
+        
     }
 }
