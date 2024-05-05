@@ -42,6 +42,7 @@ size_flags_vertical = 8
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer2/VBoxContainer"]
+texture_filter = 6
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "MOVE WITH WASD
