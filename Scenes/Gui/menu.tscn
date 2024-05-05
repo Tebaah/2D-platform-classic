@@ -33,4 +33,29 @@ theme_override_font_sizes/font_size = 48
 text = "START
 "
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer2/VBoxContainer"]
+texture_filter = 6
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "MOVE WITH WASD
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "JUMP WITH SPACE
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/VBoxContainer/Button" to="." method="OnButtonPressed"]

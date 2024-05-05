@@ -19,9 +19,9 @@ public partial class GuiController : Node
     {
         // inicializa el controlador global
         _global = GetNode<Global>("/root/Global");
-        _scoreLabel = GetNode<Label>("CanvasLayer/PanelContainer/HBoxContainer/Score");
-        _livesLabel = GetNode<Label>("CanvasLayer/PanelContainer/HBoxContainer/Life");
-        _timeLabel = GetNode<Label>("CanvasLayer/PanelContainer/HBoxContainer/Time");
+        _scoreLabel = GetNode<Label>("CanvasLayer/Control/PanelContainer/HBoxContainer/Score");
+        _livesLabel = GetNode<Label>("CanvasLayer/Control/PanelContainer/HBoxContainer/Life");
+        _timeLabel = GetNode<Label>("CanvasLayer/Control/PanelContainer/HBoxContainer/Time");
 
         lapso = 1.0f;
     }    

@@ -1,14 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://0ehonrgtt0i"]
+[gd_scene load_steps=3 format=3 uid="uid://0ehonrgtt0i"]
 
-[ext_resource type="PackedScene" uid="uid://dpt4hms4jabv7" path="res://Scenes/Levels/level_01.tscn" id="1_ox8hj"]
 [ext_resource type="PackedScene" uid="uid://bd31d1e6gfejo" path="res://Scenes/Gui/gui.tscn" id="1_v8trs"]
-[ext_resource type="PackedScene" uid="uid://ceyl0u3tcuyoe" path="res://Scenes/Characters/Player/player.tscn" id="2_x2h6q"]
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_vxw1v"]
 
 [node name="Game" type="Node"]
+script = ExtResource("1_vxw1v")
 
 [node name="Gui" parent="." instance=ExtResource("1_v8trs")]
 
-[node name="Level01" parent="." instance=ExtResource("1_ox8hj")]
-
-[node name="Player" parent="." instance=ExtResource("2_x2h6q")]
-position = Vector2(505, 1060)
+[node name="SpawnPlayer" type="Marker2D" parent="."]
+position = Vector2(256, 1280)
