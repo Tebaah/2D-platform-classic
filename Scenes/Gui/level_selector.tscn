@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0cwhmfobw1yg"]
+[gd_scene load_steps=13 format=3 uid="uid://dpdmadennx0hg"]
 
-[ext_resource type="Texture2D" uid="uid://db1o7ag3b2sp0" path="res://Assets/Tiles/HUD/hud0.png" id="1_dxcw7"]
+[ext_resource type="Texture2D" uid="uid://b2mstjlaii5d7" path="res://Assets/Tiles/Backgrounds/colored_grass.png" id="1_ak2ur"]
 [ext_resource type="Script" path="res://Scripts/LevelButton.cs" id="2_4a80y"]
 [ext_resource type="Texture2D" uid="uid://cqb4o74lscflk" path="res://Assets/Tiles/HUD/hud1.png" id="2_kp0xe"]
+[ext_resource type="Texture2D" uid="uid://ebo3ewm0s0ig" path="res://Assets/Tiles/HUD/hudPlayer_green.png" id="3_0e7y8"]
+[ext_resource type="Texture2D" uid="uid://c5o4j6s25mvf" path="res://Assets/Tiles/HUD/hud3.png" id="4_2nocs"]
 [ext_resource type="Texture2D" uid="uid://db6oply74rvg2" path="res://Assets/Tiles/HUD/hud2.png" id="4_6t580"]
+[ext_resource type="Texture2D" uid="uid://cljqsll6b7myc" path="res://Assets/Tiles/HUD/hud4.png" id="7_owv86"]
+[ext_resource type="Texture2D" uid="uid://bg0moc6l4syg6" path="res://Assets/Tiles/HUD/hud5.png" id="8_u0jw0"]
+[ext_resource type="Texture2D" uid="uid://dgtvsr16fraeh" path="res://Assets/Tiles/HUD/hud6.png" id="9_oy3qr"]
+[ext_resource type="Texture2D" uid="uid://csfgu81dbdf8q" path="res://Assets/Tiles/HUD/hud7.png" id="10_wmglf"]
+[ext_resource type="Texture2D" uid="uid://jrj2yqi0bjsn" path="res://Assets/Tiles/HUD/hud8.png" id="11_phh5a"]
+[ext_resource type="Texture2D" uid="uid://bmxqlfvppwhuh" path="res://Assets/Tiles/HUD/hud9.png" id="12_gdoy8"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -15,6 +23,12 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_ak2ur")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -22,90 +36,140 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -145.5
+offset_left = -512.0
 offset_top = -312.0
-offset_right = 145.5
-offset_bottom = 312.0
+offset_right = 648.0
+offset_bottom = 436.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
 text = "LEVELS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-action_mode = 0
-texture_normal = ExtResource("1_dxcw7")
-stretch_mode = 3
-script = ExtResource("2_4a80y")
+size_flags_vertical = 6
 
-[node name="Label" type="Label" parent="VBoxContainer/TextureButton"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.469072
-anchor_top = 0.21875
-anchor_right = 0.606529
-anchor_bottom = 0.546875
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/font_size = 30
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureButton2" type="TextureButton" parent="VBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
 action_mode = 0
 texture_normal = ExtResource("2_kp0xe")
+texture_disabled = ExtResource("3_0e7y8")
 stretch_mode = 3
 script = ExtResource("2_4a80y")
+levelId = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/TextureButton2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.469072
-anchor_top = 0.21875
-anchor_right = 0.606529
-anchor_bottom = 0.546875
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/font_size = 30
-text = "1"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureButton3" type="TextureButton" parent="VBoxContainer"]
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
 action_mode = 0
 texture_normal = ExtResource("4_6t580")
+texture_disabled = ExtResource("3_0e7y8")
 stretch_mode = 3
 script = ExtResource("2_4a80y")
+levelId = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/TextureButton3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.469072
-anchor_top = 0.21875
-anchor_right = 0.606529
-anchor_bottom = 0.546875
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/font_size = 30
-text = "2"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+action_mode = 0
+texture_normal = ExtResource("4_2nocs")
+texture_disabled = ExtResource("3_0e7y8")
+stretch_mode = 3
+script = ExtResource("2_4a80y")
+levelId = 3
 
-[connection signal="pressed" from="VBoxContainer/TextureButton" to="VBoxContainer/TextureButton" method="OnButtonPressed"]
-[connection signal="pressed" from="VBoxContainer/TextureButton2" to="VBoxContainer/TextureButton2" method="OnButtonPressed"]
-[connection signal="pressed" from="VBoxContainer/TextureButton3" to="VBoxContainer/TextureButton3" method="OnButtonPressed"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+action_mode = 0
+texture_normal = ExtResource("7_owv86")
+texture_disabled = ExtResource("3_0e7y8")
+stretch_mode = 3
+script = ExtResource("2_4a80y")
+levelId = 4
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+action_mode = 0
+texture_normal = ExtResource("8_u0jw0")
+texture_disabled = ExtResource("3_0e7y8")
+stretch_mode = 3
+script = ExtResource("2_4a80y")
+levelId = 5
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+action_mode = 0
+texture_normal = ExtResource("9_oy3qr")
+texture_disabled = ExtResource("3_0e7y8")
+stretch_mode = 3
+script = ExtResource("2_4a80y")
+levelId = 6
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+action_mode = 0
+texture_normal = ExtResource("10_wmglf")
+texture_disabled = ExtResource("3_0e7y8")
+stretch_mode = 3
+script = ExtResource("2_4a80y")
+levelId = 7
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+action_mode = 0
+texture_normal = ExtResource("11_phh5a")
+texture_disabled = ExtResource("3_0e7y8")
+stretch_mode = 3
+script = ExtResource("2_4a80y")
+levelId = 8
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+action_mode = 0
+texture_normal = ExtResource("12_gdoy8")
+texture_disabled = ExtResource("3_0e7y8")
+stretch_mode = 3
+script = ExtResource("2_4a80y")
+levelId = 9
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton" to="VBoxContainer/HBoxContainer/TextureButton" method="OnButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton2" to="VBoxContainer/HBoxContainer/TextureButton2" method="OnButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton3" to="VBoxContainer/HBoxContainer/TextureButton3" method="OnButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/TextureButton" to="VBoxContainer/HBoxContainer2/TextureButton" method="OnButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/TextureButton2" to="VBoxContainer/HBoxContainer2/TextureButton2" method="OnButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/TextureButton3" to="VBoxContainer/HBoxContainer2/TextureButton3" method="OnButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/TextureButton" to="VBoxContainer/HBoxContainer3/TextureButton" method="OnButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/TextureButton2" to="VBoxContainer/HBoxContainer3/TextureButton2" method="OnButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/TextureButton3" to="VBoxContainer/HBoxContainer3/TextureButton3" method="OnButtonPressed"]
