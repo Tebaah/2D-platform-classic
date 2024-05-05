@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://0ehonrgtt0i"]
+[gd_scene load_steps=3 format=3 uid="uid://0ehonrgtt0i"]
 
 [ext_resource type="PackedScene" uid="uid://bd31d1e6gfejo" path="res://Scenes/Gui/gui.tscn" id="1_v8trs"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_vxw1v"]
-[ext_resource type="Script" path="res://Scripts/ChangeToSelector.cs" id="3_8idcq"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_vxw1v")
@@ -11,32 +10,3 @@ script = ExtResource("1_vxw1v")
 
 [node name="SpawnPlayer" type="Marker2D" parent="."]
 position = Vector2(256, 1280)
-
-[node name="Node" type="Node" parent="."]
-
-[node name="Control" type="Control" parent="Node"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="Button" parent="Node/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -26.0
-offset_top = -15.5
-offset_right = 26.0
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 46
-text = "levels"
-script = ExtResource("3_8idcq")
-
-[connection signal="pressed" from="Node/Control/Button" to="Node/Control/Button" method="OnButtonPressed"]
